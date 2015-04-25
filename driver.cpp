@@ -14,24 +14,73 @@
 
 using namespace std;
 
+const int QUIT = 8;
+
 int main()
 {
+    int userInput = 0;
     int size;
     
-    cout << "Enter the size of the array you want sorted" << endl;
-    cin >> size;
-    
-    checkHeapSort(size);
-    cout << endl;
-    checkTreeSort(size);
-    cout << endl;
-    checkMergeSort(size);
-    cout << endl;
-    checkBubbleSort(size);
-    cout << endl;
-    checkInsertionSort(size);
-    cout << endl;
-    checkSelectionSort(size);
-    cout << endl;
-    checkQuickSort(size);
+    while (userInput != QUIT)
+    {
+        cout << "===Main Menu===" << endl
+             << "Choose a sorting algorithm." << endl
+             << "1. Heap sort" << endl
+             << "2. Tree sort" << endl
+             << "3. Merge sort" << endl
+             << "4. Bubble sort" << endl
+             << "5. Insertion sort" << endl
+             << "6. Selection sort" << endl
+             << "7. Quick sort" << endl
+             << "8. Quit" << endl;
+        cin >> userInput;
+        
+        if (userInput == sort::HEAPSORT)
+        {
+            cout << "Enter the size of the array you want sorted" << endl;
+            cin >> size;
+            checkSort(size, userInput);
+        }
+        else if (userInput == sort::TREESORT)
+        {
+            cout << "Enter the size of the array you want sorted" << endl;
+            cin >> size;
+            checkSort(size, userInput);
+        }
+        else if (userInput == sort::MERGESORT)
+        {
+            cout << "Enter the size of the array you want sorted" << endl;
+            cin >> size;
+            checkSort(size, userInput);
+        }
+        else if (userInput == sort::BUBBLESORT)
+        {
+            cout << "Enter the size of the array you want sorted" << endl;
+            cin >> size;
+            checkSort(size, userInput);
+        }
+        else if (userInput == sort::INSERTIONSORT)
+        {
+            cout << "Enter the size of the array you want sorted" << endl;
+            cin >> size;
+            checkSort(size, userInput);
+        }
+        else if (userInput == sort::SELECTIONSORT)
+        {
+            cout << "Enter the size of the array you want sorted" << endl;
+            cin >> size;
+            checkSort(size, userInput);
+        }
+        else if (userInput == sort::QUICKSORT)
+        {
+            cout << "Enter the size of the array you want sorted" << endl;
+            cin >> size;
+            checkSort(size, userInput);
+        }
+        else if (userInput == QUIT)
+        {
+            cout << "Goodbye!" << endl;
+        }
+    }
 }
+

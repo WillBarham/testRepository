@@ -14,16 +14,70 @@
 
 using namespace std;
 
-//Heapsort functions
-void checkHeapSort(int size)
+void checkSort(int size, int sort)
 {
-    cout << "Heapsort:" << endl;
-    
     int *array = new int[size];
-    
-    //Sort reverse order list
+    int *secondArray = new int[size];
+    int *thirdArray = new int[size];
+    int counter1 = 0;
+    int counter2 = 0;
+    int counter3 = 0;
     createReverseOrderList(array, size);
-    array = callHeapSort(array, size);
+    createInOrderList(secondArray, size);
+    createRandomList(thirdArray, size);
+    
+    cout << endl;
+    if (sort == sort::HEAPSORT)
+    {
+        cout << "Heapsort: " << endl;
+        callHeapSort(array, size, counter1);
+        callHeapSort(secondArray, size, counter2);
+        callHeapSort(thirdArray, size, counter3);
+    }
+    else if (sort == sort::TREESORT)
+    {
+        cout << "Treesort: " << endl;
+        callTreeSort(array, size, counter1);
+        callTreeSort(secondArray, size, counter2);
+        callTreeSort(thirdArray, size, counter3);
+    }
+    else if (sort == sort::MERGESORT)
+    {
+        cout << "Mergesort: " << endl;
+        callMergeSort(array, size, counter1);
+        callMergeSort(secondArray, size, counter2);
+        callMergeSort(thirdArray, size, counter3);
+    }
+    else if (sort == sort::BUBBLESORT)
+    {
+        cout << "Bubblesort: " << endl;
+        callBubbleSort(array, size, counter1);
+        callBubbleSort(secondArray, size, counter2);
+        callBubbleSort(thirdArray, size, counter3);
+    }
+    else if (sort == sort::INSERTIONSORT)
+    {
+        cout << "Insertion Sort: " << endl;
+        callInsertionSort(array, size, counter1);
+        callInsertionSort(secondArray, size, counter2);
+        callInsertionSort(thirdArray, size, counter3);
+    }
+    else if (sort == sort::SELECTIONSORT)
+    {
+        cout << "Selection Sort: " << endl;
+        callSelectionSort(array, size, counter1);
+        callSelectionSort(secondArray, size, counter2);
+        callSelectionSort(thirdArray, size, counter3);
+    }
+    else if (sort == sort::QUICKSORT)
+    {
+        cout << "Quicksort: " << endl;
+        callQuickSort(array, size, counter1);
+        callQuickSort(secondArray, size, counter2);
+        callQuickSort(thirdArray, size, counter3);
+    }
+
+    //array is reverse order array
     if (!isSorted(array, size))
     {
         cout << "Reverse order list not sorted." << endl;
@@ -31,458 +85,153 @@ void checkHeapSort(int size)
     else
     {
         cout << "Reverse order list sorted." << endl;
+        cout << "Count = " << counter1 << endl;
     }
-    for (int i = 0; i < size; i++)
+    cout << "Sorted list: " << endl;
+    if (size <= 10)
     {
-        cout << array[i] << " ";
+        for (int i = 0; i < size; i++)
+        {
+            cout << array[i] << " ";
+        }
+        cout << endl;
+    }
+    else
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            cout << array[i] << " ";
+        }
+        cout << "... ";
+        for (int i = 0; i < 5; i++)
+        {
+            cout << array[size - 5 + i] << " ";
+        }
+        cout << endl;
     }
     cout << endl;
     
-    //Sort in order list
-    createInOrderList(array, size);
-    array = callHeapSort(array, size);
-    if (!isSorted(array, size))
+    //secondArray is the reverse order array
+    if (!isSorted(secondArray, size))
     {
         cout << "In order list not sorted." << endl;
     }
     else
     {
         cout << "In order list sorted." << endl;
+        cout << "Count = " << counter2 << endl;
     }
-    for (int i = 0; i < size; i++)
+    cout << "Sorted list: " << endl;
+    if (size <= 10)
     {
-        cout << array[i] << " ";
+        for (int i = 0; i < size; i++)
+        {
+            cout << secondArray[i] << " ";
+        }
+        cout << endl;
+    }
+    else
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            cout << secondArray[i] << " ";
+        }
+        cout << "... ";
+        for (int i = 0; i < 5; i++)
+        {
+            cout << secondArray[size - 5 + i] << " ";
+        }
+        cout << endl;
     }
     cout << endl;
     
-    //Sort random list
-    createRandomList(array, size);
-    array = callHeapSort(array, size);
-    if (!isSorted(array, size))
+    //thirdArray is random order array
+    if (!isSorted(thirdArray, size))
     {
         cout << "Random list not sorted." << endl;
     }
     else
     {
         cout << "Random list sorted." << endl;
+        cout << "Counter = " << counter3 << endl;
     }
-    for (int i = 0; i < size; i++)
+    cout << "Sorted list: " << endl;
+    if (size <= 10)
     {
-        cout << array[i] << " ";
+        for (int i = 0; i < size; i++)
+        {
+            cout << thirdArray[i] << " ";
+        }
+        cout << endl;
+    }
+    else
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            cout << thirdArray[i] << " ";
+        }
+        cout << "... ";
+        for (int i = 0; i < 5; i++)
+        {
+            cout << thirdArray[size - 5 + i] << " ";
+        }
+        cout << endl;
     }
     cout << endl;
     
+    //free memory
     delete [] array;
+    delete [] secondArray;
+    delete [] thirdArray;
 }
 
-int *callHeapSort(int *arr, int size)
+int *callHeapSort(int *arr, int size, int &counter)
 {
     Heap myHeap(arr, size);
     myHeap.heapSort();
     arr = myHeap.getArray();
+    counter = myHeap.getCounter();
     
     return arr;
 }
 
-//Treesort functions
-void checkTreeSort(int size)
-{
-    cout << "Treesort:" << endl;
-    
-    int *array = new int[size];
-    
-    //Sort reverse order list
-    createReverseOrderList(array, size);
-    array = callTreeSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "Reverse order list not sorted." << endl;
-    }
-    else
-    {
-        cout << "Reverse order list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    //Sort in order list
-    createInOrderList(array, size);
-    array = callTreeSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "In order list not sorted." << endl;
-    }
-    else
-    {
-        cout << "In order list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    //Sort random list
-    createRandomList(array, size);
-    array = callTreeSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "Random list not sorted." << endl;
-    }
-    else
-    {
-        cout << "Random list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    delete [] array;
-}
-
-int *callTreeSort(int *arr, int size)
+int *callTreeSort(int *arr, int size, int &counter)
 {
     Tree myTree(arr, size);
     arr = myTree.treeSort(arr);
+    counter = myTree.getCounter();
+    
     return arr;
 }
 
-//Merge sort functions
-int *callMergeSort(int *arr, int size)
+int *callMergeSort(int *arr, int size, int &counter)
 {
-    mergeSort(arr, 0, size - 1);
+    mergeSort(arr, 0, size - 1, counter);
     return arr;
 }
 
-void checkMergeSort(int size)
+int *callBubbleSort(int *arr, int size, int &counter)
 {
-    cout << "Merge sort:" << endl;
-        
-    int *array = new int[size];
-    
-    //Sort reverse order list
-    createReverseOrderList(array, size);
-    array = callMergeSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "Reverse order list not sorted." << endl;
-    }
-    else
-    {
-        cout << "Reverse order list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    //Sort in order list
-    createInOrderList(array, size);
-    array = callMergeSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "In order list not sorted." << endl;
-    }
-    else
-    {
-    cout << "In order list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    //Sort random list
-    createRandomList(array, size);
-    array = callMergeSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "Random list not sorted." << endl;
-    }
-    else
-    {
-        cout << "Random list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    delete [] array;
-}
-
-int *callBubbleSort(int *arr, int size)
-{
-    bubbleSort(arr, size);
+    bubbleSort(arr, size, counter);
     return arr;
 }
 
-void checkBubbleSort(int size)
+int *callInsertionSort(int *arr, int size, int &counter)
 {
-    cout << "Bubble sort:" << endl;
-    
-    int *array = new int[size];
-    
-    //Sort reverse order list
-    createReverseOrderList(array, size);
-    array = callBubbleSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "Reverse order list not sorted." << endl;
-    }
-    else
-    {
-        cout << "Reverse order list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    //Sort in order list
-    createInOrderList(array, size);
-    array = callBubbleSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "In order list not sorted." << endl;
-    }
-    else
-    {
-        cout << "In order list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    //Sort random list
-    createRandomList(array, size);
-    array = callBubbleSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "Random list not sorted." << endl;
-    }
-    else
-    {
-        cout << "Random list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    delete [] array;
-}
-
-//Insertion sort functions
-int *callInsertionSort(int *arr, int size)
-{
-    insertionSort(arr, size);
-    return arr;
-}
-void checkInsertionSort(int size)
-{
-    cout << "Insertion sort:" << endl;
-    
-    int *array = new int[size];
-    
-    //Sort reverse order list
-    createReverseOrderList(array, size);
-    array = callInsertionSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "Reverse order list not sorted." << endl;
-    }
-    else
-    {
-        cout << "Reverse order list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    //Sort in order list
-    createInOrderList(array, size);
-    array = callInsertionSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "In order list not sorted." << endl;
-    }
-    else
-    {
-        cout << "In order list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    //Sort random list
-    createRandomList(array, size);
-    array = callInsertionSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "Random list not sorted." << endl;
-    }
-    else
-    {
-        cout << "Random list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    delete [] array;
-}
-
-//Selection Sort Functions
-int *callSelectionSort(int *arr, int size)
-{
-    selectionSort(arr, size);
+    insertionSort(arr, size, counter);
     return arr;
 }
 
-void checkSelectionSort(int size)
+int *callSelectionSort(int *arr, int size, int &counter)
 {
-    cout << "Selection sort:" << endl;
-    
-    int *array = new int[size];
-    
-    //Sort reverse order list
-    createReverseOrderList(array, size);
-    array = callSelectionSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "Reverse order list not sorted." << endl;
-    }
-    else
-    {
-        cout << "Reverse order list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    //Sort in order list
-    createInOrderList(array, size);
-    array = callSelectionSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "In order list not sorted." << endl;
-    }
-    else
-    {
-        cout << "In order list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    //Sort random list
-    createRandomList(array, size);
-    array = callSelectionSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "Random list not sorted." << endl;
-    }
-    else
-    {
-        cout << "Random list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    delete [] array;
-}
-
-//Quick sort functions
-int *callQuickSort(int *arr, int size)
-{
-    quickSort(arr, 0, size - 1);
+    selectionSort(arr, size, counter);
     return arr;
 }
 
-void checkQuickSort(int size)
+int *callQuickSort(int *arr, int size, int &counter)
 {
-    cout << "Quick sort:" << endl;
-    
-    int *array = new int[size];
-    
-    //Sort reverse order list
-    createReverseOrderList(array, size);
-    array = callQuickSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "Reverse order list not sorted." << endl;
-    }
-    else
-    {
-        cout << "Reverse order list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    //Sort in order list
-    createInOrderList(array, size);
-    array = callQuickSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "In order list not sorted." << endl;
-    }
-    else
-    {
-        cout << "In order list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    //Sort random list
-    createRandomList(array, size);
-    array = callQuickSort(array, size);
-    if (!isSorted(array, size))
-    {
-        cout << "Random list not sorted." << endl;
-    }
-    else
-    {
-        cout << "Random list sorted." << endl;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
-    
-    delete [] array;
+    quickSort(arr, 0, size - 1, counter);
+    return arr;
 }
 
 void createInOrderList(int *arr, int size)

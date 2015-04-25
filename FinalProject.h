@@ -9,33 +9,18 @@
 #ifndef FINAL_PROJECT_H
 #define FINAL_PROJECT_H
 
-//Heapsort functions
-int *callHeapSort(int *arr, int size);
-void checkHeapSort(int size);
+enum sort {HEAPSORT = 1, TREESORT, MERGESORT, BUBBLESORT, INSERTIONSORT, SELECTIONSORT, QUICKSORT};
 
-//Treesort functions
-int *callTreeSort(int *arr, int size);
-void checkTreeSort(int size);
+//Check sort
+void checkSort(int size, int userInput);
 
-//Merge sort functions
-int *callMergeSort(int *arr, int size);
-void checkMergeSort(int size);
-
-//Bubble sort functions
-int *callBubbleSort(int *arr, int size);
-void checkBubbleSort(int size);
-
-//Insertion sort functions
-int *callInsertionSort(int *arr, int size);
-void checkInsertionSort(int size);
-
-//Selection sort functions
-int *callSelectionSort(int *arr, int size);
-void checkSelectionSort(int size);
-
-//Quick sort functions
-int *callQuickSort(int *arr, int size);
-void checkQuickSort(int size);
+int *callHeapSort(int *arr, int size, int &counter);
+int *callTreeSort(int *arr, int size, int &counter);
+int *callMergeSort(int *arr, int size, int &counter);
+int *callBubbleSort(int *arr, int size, int &counter);
+int *callInsertionSort(int *arr, int size, int &counter);
+int *callSelectionSort(int *arr, int size, int &counter);
+int *callQuickSort(int *arr, int size, int &counter);
 
 //General Functions
 void createReverseOrderList(int *arr, int size);

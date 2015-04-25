@@ -13,7 +13,7 @@
 using namespace std;
 
 //Merge sort functions
-void merge(int *arr, int lowerIndex, int middleIndex, int upperIndex)
+void merge(int *arr, int lowerIndex, int middleIndex, int upperIndex, int &counter)
 {
     int first = middleIndex - lowerIndex + 1;
     int second = upperIndex - middleIndex;
@@ -23,10 +23,12 @@ void merge(int *arr, int lowerIndex, int middleIndex, int upperIndex)
     for (i = 0; i < first; i++)
     {
         left[i] = arr[lowerIndex + i];
+        counter++;
     }
     for (j = 0; j < second; j++)
     {
         right[j] = arr[middleIndex + j + 1];
+        counter++;
     }
     left[first] = INT_MAX;
     right[second] = INT_MAX;
@@ -44,33 +46,44 @@ void merge(int *arr, int lowerIndex, int middleIndex, int upperIndex)
             arr[k] = right[j];
             j++;
         }
+        counter++;
     }
 }
 
-void mergeSort(int *arr, int lowerIndex, int upperIndex)
+void mergeSort(int *arr, int lowerIndex, int upperIndex, int &counter)
 {
     if (lowerIndex < upperIndex)
     {
         int middleIndex = ((lowerIndex + upperIndex)/2);
-        mergeSort(arr, lowerIndex, middleIndex);
-        mergeSort(arr, middleIndex + 1, upperIndex);
-        merge(arr, lowerIndex, middleIndex, upperIndex);
+        mergeSort(arr, lowerIndex, middleIndex, counter);
+        mergeSort(arr, middleIndex + 1, upperIndex, counter);
+        merge(arr, lowerIndex, middleIndex, upperIndex, counter);
+        counter++;
     }
 }
 
 //Quicksort function
-void quickSort(int *arr, int left, int right)
+void quickSort(int *arr, int left, int right, int &counter)
 {
     int i = left;
     int j = right;
     int temp;
     int pivot = arr[(left + right) / 2];
-    while(i <= j){
+    while(i <= j)
+    {
+        counter++;
         while(arr[i] < pivot)
+        {
+            counter++;
             i++;
+        }
         while(arr[j] > pivot)
+        {
+            counter++;
             j--;
-        if(i <= j){
+        }
+        if(i <= j)
+        {
             temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
@@ -79,21 +92,29 @@ void quickSort(int *arr, int left, int right)
         }
     }
     if (left < j)
-        quickSort(arr, left, j);
+    {
+        counter++;
+        quickSort(arr, left, j, counter);
+    }
     if (i < right)
-        quickSort(arr, i, right);
+    {
+        counter++;
+        quickSort(arr, i, right, counter);
+    }
 }
 
 //Insertion sort function
-void insertionSort(int *array, int size)
+void insertionSort(int *array, int size, int &counter)
 {
     int index, j;
     for(int i = 1; i < size; i++)
     {
+        counter++;
         index = array[i];
         j = i;
         while((j > 0) && (array[j - 1] > index))
         {
+            counter++;
             array[j] = array[j - 1];
             j = j - 1;
         }
@@ -102,15 +123,17 @@ void insertionSort(int *array, int size)
 }
 
 //Selection sort function
-void selectionSort(int *array, int size)
+void selectionSort(int *array, int size, int &counter)
 {
     int minIndex;
     int temp;
     for(int i = 0; i < size - 1; i++)
     {
+        counter++;
         minIndex = i;
         for(int j = i + 1; j < size; j++)
         {
+            counter++;
             if(array[j] < array[minIndex])
             {
                 minIndex = j;
@@ -126,13 +149,15 @@ void selectionSort(int *array, int size)
 }
 
 //Bubble sort function
-void bubbleSort(int *array, int size)
+void bubbleSort(int *array, int size, int &counter)
 {
     int temp;
     for(int i = 0; i < size - 1; i++)
     {
+        counter++;
         for(int j = 0; j < size - i - 1; j++)
         {
+            counter++;
             if(array[j] > array[j+1])
             {
                 temp = array[j];

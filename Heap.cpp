@@ -13,6 +13,7 @@ using namespace std;
 
 Heap::Heap(int *arr, int size)
 {
+    counter = 0;
     theArray = arr;
     buildMaxHeap(arr, size);
 }
@@ -28,12 +29,14 @@ void Heap::buildMaxHeap(int *arr, int size)
     heapSize = arrayLength;
     for (int i = arrayLength/2; i >= 0; i--)
     {
+        counter++;
         maxHeapify(arr, i);
     }
 }
 
 void Heap::maxHeapify(int *arr, int index)
 {
+    counter++;
     int largest;
     int left = returnLeft(index);
     int right = returnRight(index);
@@ -78,10 +81,16 @@ int *Heap::getArray()
     return theArray;
 }
 
+int Heap::getCounter()
+{
+    return counter;
+}
+
 void Heap::heapSort()
 {
     for (int i = heapSize - 1; i >= 1; i--)
     {
+        counter++;
         int temp = theArray[0];
         theArray[0] = theArray[i];
         theArray[i] = temp;

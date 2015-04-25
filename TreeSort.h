@@ -27,9 +27,11 @@ class Tree
         void insertNode(int value);
         void insertNode(node *newNode, node *theRoot);
         int* treeSort(int *arr);
-        void treeSort(int *arr, node *currentNode, int &counter);
+        void treeSort(int *arr, node *currentNode, int &index);
+        int getCounter();
     private:
         node* root;
+        int counter;
 };
 
 #endif

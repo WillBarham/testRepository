@@ -13,6 +13,7 @@ using namespace std;
 
 Tree::Tree(int *arr, int size)
 {
+    counter = 0;
     root = NULL;
     buildTree(arr, size);
 }
@@ -41,12 +42,14 @@ void Tree::buildTree(int *arr, int size)
 {
     for (int i = 0; i < size; i++)
     {
+        counter++;
         insertNode(arr[i]);
     }
 }
 
 void Tree::insertNode(int value)
 {
+    counter++;
     //Create the new node to add
     node *newNode = new node;
     newNode->left = NULL;
@@ -71,6 +74,7 @@ void Tree::insertNode(node *newNode, node *theRoot)
     node *parentNode = NULL;
     while (newPosition != NULL)
     {
+        counter++;
         parentNode = newPosition;
         if (newNode->value < newPosition->value)
         {
@@ -93,20 +97,25 @@ void Tree::insertNode(node *newNode, node *theRoot)
 
 int* Tree::treeSort(int *arr)
 {
-    int counter = 0;
-    treeSort(arr, root, counter);
+    counter++;
+    int index = 0;
+    treeSort(arr, root, index);
     return arr;
 }
 
-void Tree::treeSort(int *arr, node *currentNode, int &counter)
+void Tree::treeSort(int *arr, node *currentNode, int &index)
 {
+    counter++;
     if (currentNode != NULL)
     {
-        
-        treeSort(arr, currentNode->left, counter);
-        arr[counter] = currentNode->value;
-        counter++;
-        treeSort(arr, currentNode->right, counter);
+        treeSort(arr, currentNode->left, index);
+        arr[index] = currentNode->value;
+        index++;
+        treeSort(arr, currentNode->right, index);
     }
 }
 
+int Tree::getCounter()
+{
+    return counter;
+}

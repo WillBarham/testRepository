@@ -21,10 +21,12 @@ class Heap
         int returnRight(int index);
         void heapSort();
         int *getArray();
+        int getCounter();
     private:
         int *theArray;
         int heapSize;
         int arrayLength;
+        int counter;
 };
 
 #endif

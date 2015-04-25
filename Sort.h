@@ -9,22 +9,20 @@
 #ifndef SORT_H
 #define SORT_H
 
-//Merge Sort, Quick Sort, Bubble Sort, Insertion Sort, Selection Sort in this file
-
 //Merge Sort
-void merge(int *arr, int lowerIndex, int middleIndex, int upperIndex);
-void mergeSort(int *arr, int lowerIndex, int upperIndex);
+void merge(int *arr, int lowerIndex, int middleIndex, int upperIndex, int &counter);
+void mergeSort(int *arr, int lowerIndex, int upperIndex, int &counter);
 
 //Bubble sort
-void bubbleSort(int *array, int size);
+void bubbleSort(int *array, int size, int &counter);
 
 //Insertion Sort
-void insertionSort(int *array, int size);
+void insertionSort(int *array, int size, int &counter);
 
 //Selection Sort
-void selectionSort(int *array, int size);
+void selectionSort(int *array, int size, int &counter);
 
 //Quick Sort
-void quickSort(int *arr, int left, int right);
+void quickSort(int *arr, int left, int right, int &counter);
 
 #endif
