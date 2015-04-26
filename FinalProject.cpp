@@ -14,6 +14,8 @@
 
 using namespace std;
 
+enum sort;
+
 void checkSort(int size, int sort)
 {
     int *array = new int[size];
@@ -27,49 +29,49 @@ void checkSort(int size, int sort)
     createRandomList(thirdArray, size);
     
     cout << endl;
-    if (sort == sort::HEAPSORT)
+    if (sort == HEAPSORT)
     {
         cout << "Heapsort: " << endl;
         callHeapSort(array, size, counter1);
         callHeapSort(secondArray, size, counter2);
         callHeapSort(thirdArray, size, counter3);
     }
-    else if (sort == sort::TREESORT)
+    else if (sort == TREESORT)
     {
         cout << "Treesort: " << endl;
         callTreeSort(array, size, counter1);
         callTreeSort(secondArray, size, counter2);
         callTreeSort(thirdArray, size, counter3);
     }
-    else if (sort == sort::MERGESORT)
+    else if (sort == MERGESORT)
     {
         cout << "Mergesort: " << endl;
         callMergeSort(array, size, counter1);
         callMergeSort(secondArray, size, counter2);
         callMergeSort(thirdArray, size, counter3);
     }
-    else if (sort == sort::BUBBLESORT)
+    else if (sort == BUBBLESORT)
     {
         cout << "Bubblesort: " << endl;
         callBubbleSort(array, size, counter1);
         callBubbleSort(secondArray, size, counter2);
         callBubbleSort(thirdArray, size, counter3);
     }
-    else if (sort == sort::INSERTIONSORT)
+    else if (sort == INSERTIONSORT)
     {
         cout << "Insertion Sort: " << endl;
         callInsertionSort(array, size, counter1);
         callInsertionSort(secondArray, size, counter2);
         callInsertionSort(thirdArray, size, counter3);
     }
-    else if (sort == sort::SELECTIONSORT)
+    else if (sort == SELECTIONSORT)
     {
         cout << "Selection Sort: " << endl;
         callSelectionSort(array, size, counter1);
         callSelectionSort(secondArray, size, counter2);
         callSelectionSort(thirdArray, size, counter3);
     }
-    else if (sort == sort::QUICKSORT)
+    else if (sort == QUICKSORT)
     {
         cout << "Quicksort: " << endl;
         callQuickSort(array, size, counter1);

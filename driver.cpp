@@ -7,14 +7,12 @@
 //
 
 #include <iostream>
-#include "Heap.h"
 #include "FinalProject.h"
-#include "Sort.h"
-#include "TreeSort.h"
 
 using namespace std;
 
 const int QUIT = 8;
+enum sort;
 
 int main()
 {
@@ -35,43 +33,43 @@ int main()
              << "8. Quit" << endl;
         cin >> userInput;
         
-        if (userInput == sort::HEAPSORT)
+        if (userInput == HEAPSORT)
         {
             cout << "Enter the size of the array you want sorted" << endl;
             cin >> size;
             checkSort(size, userInput);
         }
-        else if (userInput == sort::TREESORT)
+        else if (userInput == TREESORT)
         {
             cout << "Enter the size of the array you want sorted" << endl;
             cin >> size;
             checkSort(size, userInput);
         }
-        else if (userInput == sort::MERGESORT)
+        else if (userInput == MERGESORT)
         {
             cout << "Enter the size of the array you want sorted" << endl;
             cin >> size;
             checkSort(size, userInput);
         }
-        else if (userInput == sort::BUBBLESORT)
+        else if (userInput == BUBBLESORT)
         {
             cout << "Enter the size of the array you want sorted" << endl;
             cin >> size;
             checkSort(size, userInput);
         }
-        else if (userInput == sort::INSERTIONSORT)
+        else if (userInput == INSERTIONSORT)
         {
             cout << "Enter the size of the array you want sorted" << endl;
             cin >> size;
             checkSort(size, userInput);
         }
-        else if (userInput == sort::SELECTIONSORT)
+        else if (userInput == SELECTIONSORT)
         {
             cout << "Enter the size of the array you want sorted" << endl;
             cin >> size;
             checkSort(size, userInput);
         }
-        else if (userInput == sort::QUICKSORT)
+        else if (userInput == QUICKSORT)
         {
             cout << "Enter the size of the array you want sorted" << endl;
             cin >> size;
