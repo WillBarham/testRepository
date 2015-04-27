@@ -3,8 +3,9 @@
 //  FinalProjectCSCI2270
 //
 //  Created by William Barham on 4/22/15.
-//  Copyright (c) 2015 William Barham. All rights reserved.
-//
+//  CSCI 2270- Data Structures and Algorithms
+//  Instructor: Hoenigman
+//  Final Project
 
 #include <iostream>
 #include "FinalProject.h"
