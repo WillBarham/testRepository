@@ -21,8 +21,11 @@ As I said in "How to Run" you will need a terminal that uses UNIX or Linux comma
 William Barham
 
 #Contributors
-There are no contributors so far.
+Both dryzhko and Austin-Chau have contributed to this repository.
 
 #Open issues/bugs
-The program only accepts number inputs when it requests user input. It will fail if anything else is entered. Additionally, if the user inputs too large an array size, the program may never finish. I have not added an upper bound for the acceptable array size, but it seems that only the sorts that run in nlg(n) time finish in a reasonable amount of time for array sizes of about 1,000,000. I attempted bubble sort with an array size of 1,000,000, and after about 10 minutes, the command still hadn't finished. Therefore, one enhancement my reviewer might make is to add an upper limit for the accepted user input of array size. I would also like my reviewer to check if the counters I have added to each of the sorts effectively measure how the sort scales with size. Also, I have done my best to avoid any memory leaks, but please keep an eye out for them and tell me if you find any. Thank you!
-    
+The program only accepts number inputs when it requests user input. It will fail if anything else is entered. Additionally, if the user inputs too large an array size, the program may never finish. I have not added an upper bound for the acceptable array size, but it seems that only the sorts that run in nlg(n) time finish in a reasonable amount of time for array sizes of about 1,000,000. I attempted bubble sort with an array size of 1,000,000, and after about 10 minutes, the command still hadn't finished. Therefore, one enhancement my reviewer might make is to add an upper limit for the accepted user input of array size. 
+
+I would also like my reviewer to check if the counters I have added to each of the sorts effectively measure how the sort scales with size. Also, I have done my best to avoid any memory leaks, but please keep an eye out for them and tell me if you find any. Thank you!
+
+Update, 5/3/15: An upper bound and check for numerical user inputs have been added.
