@@ -15,6 +15,7 @@ enum sort {HEAPSORT = 1, TREESORT, MERGESORT, BUBBLESORT, INSERTIONSORT, SELECTI
 //Check sort
 void checkSort(int size, int userInput);
 
+
 void callHeapSort(int *arr, int size, int &counter);
 void callTreeSort(int *arr, int size, int &counter);
 void callMergeSort(int *arr, int size, int &counter);
@@ -25,5 +26,6 @@ void createReverseOrderList(int *arr, int size);
 void createInOrderList(int *arr, int size);
 void createRandomList(int *arr, int size);
 bool isSorted(int *arr, int size);
+
 
 #endif
