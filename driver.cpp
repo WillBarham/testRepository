@@ -12,7 +12,7 @@
 
 using namespace std;
 
-const int QUIT = 8;
+const char QUIT = 8;
 enum sort;
 
 int main()
@@ -33,113 +33,108 @@ int main()
              << "7. Quick sort" << endl
              << "8. Quit" << endl;
         cin >> userInput;
+        if(cin)
+        {
+            if (userInput == HEAPSORT)
+            {
 
-        if (userInput == HEAPSORT)
-        {
+                size = 100000000;
+                while(size > 10000)
+                {
+                    cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
+                    cin >> size;
+                }
+                if (size <= 10000)
+                {
+                        checkSort(size, userInput);
+                }
 
-            size = 100000000;
-            while(size>10000)
-            {
-                cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
-                cin >> size;
             }
-            if (size < 10000)
+            else if (userInput == TREESORT)
             {
-                    checkSort(size, userInput);
+                 size = 100000000;
+                while(size > 10000)
+                {
+                    cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
+                    cin >> size;
+                }
+                if (size <= 10000)
+                {
+                        checkSort(size, userInput);
+                }
             }
-
-        }
-        else if (userInput == TREESORT)
-        {
-             size = 100000000;
-            while(size>10000)
+            else if (userInput == MERGESORT)
             {
-                cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
-                cin >> size;
+                 size = 100000000;
+                while(size > 10000)
+                {
+                    cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
+                    cin >> size;
+                }
+                if (size <= 10000)
+                {
+                        checkSort(size, userInput);
+                }
             }
-            if (size < 10000)
+            else if (userInput == BUBBLESORT)
             {
-                    checkSort(size, userInput);
+                 size = 100000000;
+                while(size > 10000)
+                {
+                    cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
+                    cin >> size;
+                }
+                if (size <= 10000)
+                {
+                        checkSort(size, userInput);
+                }
             }
-        }
-        else if (userInput == MERGESORT)
-        {
-             size = 100000000;
-            while(size>10000)
+            else if (userInput == INSERTIONSORT)
             {
-                cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
-                cin >> size;
+                 size = 100000000;
+                while(size > 10000)
+                {
+                    cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
+                    cin >> size;
+                }
+                if (size <= 10000)
+                {
+                        checkSort(size, userInput);
+                }
             }
-            if (size < 10000)
+            else if (userInput == SELECTIONSORT)
             {
-                    checkSort(size, userInput);
+                 size = 100000000;
+                while(size > 10000)
+                {
+                    cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
+                    cin >> size;
+                }
+                if (size <= 10000)
+                {
+                        checkSort(size, userInput);
+                }
             }
-        }
-        else if (userInput == BUBBLESORT)
-        {
-             size = 100000000;
-            while(size>10000)
+            else if (userInput == QUICKSORT)
             {
-                cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
-                cin >> size;
+                 size = 100000000;
+                while(size > 10000)
+                {
+                    cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
+                    cin >> size;
+                }
+                if (size <= 10000)
+                {
+                        checkSort(size, userInput);
+                }
             }
-            if (size < 10000)
+            else if (userInput == QUIT)
             {
-                    checkSort(size, userInput);
-            }
-        }
-        else if (userInput == INSERTIONSORT)
-        {
-             size = 100000000;
-            while(size>10000)
-            {
-                cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
-                cin >> size;
-            }
-            if (size < 10000)
-            {
-                    checkSort(size, userInput);
-            }
-        }
-        else if (userInput == SELECTIONSORT)
-        {
-             size = 100000000;
-            while(size>10000)
-            {
-                cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
-                cin >> size;
-            }
-            if (size < 10000)
-            {
-                    checkSort(size, userInput);
-            }
-        }
-        else if (userInput == QUICKSORT)
-        {
-             size = 100000000;
-            while(size>10000)
-            {
-                cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
-                cin >> size;
-            }
-            if (size < 10000)
-            {
-                    checkSort(size, userInput);
+                cout << "Goodbye!" << endl;
             }
         }
-        else if (userInput == QUIT)
-        {
-             size = 100000000;
-            while(size>10000)
-            {
-                cout << "Enter the size of the array you want sorted (10000 or under)" << endl;
-                cin >> size;
-            }
-            if (size < 10000)
-            {
-                    checkSort(size, userInput);
-            }
-        }
+        cin.clear();
+        cin.ignore(10000,'\n');
     }
 }
 
